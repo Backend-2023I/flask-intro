@@ -19,13 +19,10 @@ def main():
 def about():
     return "<h1>About Page</h1>"
 
-@app.route("/api/")
-def home():
-    r = request.values
-    print(r)
-    a = r.get('a', "0")
-    b = r.get('b', "0")
-    return {"sum": int(a) + int(b)}
+@app.route("/api/<float:n>")
+def home(n):
+    print(type(n))
+    return {"n": n}
 
 if __name__ == "__main__":
     app.run(port='8080', debug=True)
